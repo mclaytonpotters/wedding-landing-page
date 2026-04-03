@@ -329,6 +329,7 @@ h1, h2, h3 {
   display: flex;
   gap: 32px;
   padding: 12px 0;
+  flex-wrap: nowrap;
 }
 
 .radio-option {
@@ -370,6 +371,7 @@ h1, h2, h3 {
   font-family: 'Cormorant Garamond', serif;
   font-size: 1.05rem;
   color: var(--ink-light);
+  white-space: nowrap;
 }
 
 .submit-btn {

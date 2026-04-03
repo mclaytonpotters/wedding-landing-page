@@ -1,0 +1,456 @@
+/* ── Reset & Base ── */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --cream: #F5F0E8;
+  --card: #F9F6F0;
+  --ink: #1C1915;
+  --ink-light: #3D3830;
+  --ink-faint: #7A7265;
+  --gold: #B89B5E;
+  --gold-light: #CCB578;
+  --gold-dark: #96793A;
+  --white: #FFFFFF;
+  --border: rgba(28, 25, 21, 0.1);
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Cormorant Garamond', 'Georgia', serif;
+  background-color: var(--cream);
+  color: var(--ink);
+  line-height: 1.7;
+  min-height: 100vh;
+  /* Linen / paper grain on the outer background */
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+}
+
+/* ── Card Container ── */
+.card {
+  max-width: 680px;
+  margin: 0 auto;
+  background: var(--card);
+  min-height: 100vh;
+  position: relative;
+  /* Layered paper texture: fine grain + subtle fiber lines */
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='p'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='6' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23p)' opacity='0.035'/%3E%3C/svg%3E"),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100'%3E%3Cfilter id='f'%3E%3CfeTurbulence type='turbulence' baseFrequency='0.02 0.8' numOctaves='2' seed='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100' height='100' filter='url(%23f)' opacity='0.018'/%3E%3C/svg%3E");
+  background-color: var(--card);
+  /* Heavy card stock shadow — thick edge feel */
+  box-shadow:
+    0 1px 0 rgba(0,0,0,0.03),
+    0 2px 0 rgba(0,0,0,0.02),
+    0 4px 0 rgba(0,0,0,0.015),
+    0 8px 20px rgba(0,0,0,0.06),
+    0 20px 50px rgba(0,0,0,0.04),
+    inset 0 0 80px rgba(0,0,0,0.015);
+}
+
+@media (min-width: 760px) {
+  .card {
+    margin: 48px auto;
+    min-height: auto;
+    border-radius: 1px;
+  }
+}
+
+.card-inner {
+  padding: 72px 56px;
+  position: relative;
+  z-index: 1;
+}
+
+@media (max-width: 600px) {
+  .card-inner {
+    padding: 52px 28px;
+  }
+}
+
+/* ── Decorative Border (embossed inner frame) ── */
+.card::before {
+  content: '';
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  right: 20px;
+  bottom: 20px;
+  border: 1px solid rgba(28, 25, 21, 0.06);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.5),
+    0 1px 0 rgba(255,255,255,0.3);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ── Letterpress / Ink Typography ── */
+h1, h2, h3 {
+  font-weight: 400;
+}
+
+/* Ink impression effect — text appears pressed into paper */
+.ink-pressed {
+  color: var(--ink);
+  text-shadow:
+    0 0.5px 0 rgba(255,255,255,0.15),
+    0 -0.5px 1px rgba(0,0,0,0.12);
+}
+
+/* ── Hero Section ── */
+.hero {
+  text-align: center;
+  padding-bottom: 52px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 52px;
+}
+
+.bee-monogram {
+  margin: 0 auto 40px;
+  width: 80px;
+  height: 80px;
+}
+
+.bee-monogram svg {
+  width: 100%;
+  height: 100%;
+  filter: drop-shadow(0 0.5px 0 rgba(255,255,255,0.3));
+}
+
+.hero-names {
+  font-family: 'Cormorant SC', 'Cormorant Garamond', serif;
+  font-size: 2.8rem;
+  font-weight: 300;
+  letter-spacing: 0.12em;
+  line-height: 1.2;
+  color: var(--ink);
+  margin-bottom: 22px;
+  text-transform: lowercase;
+  /* Letterpress: slight deboss look */
+  text-shadow:
+    0 0.5px 0 rgba(255,255,255,0.2),
+    0 -0.5px 1px rgba(0,0,0,0.08);
+}
+
+.hero-names .ampersand {
+  display: block;
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 1.8rem;
+  color: var(--gold);
+  letter-spacing: 0;
+  margin: 6px 0;
+  text-shadow:
+    0 0.5px 0 rgba(255,255,255,0.25),
+    0 -0.5px 0.5px rgba(150,121,58,0.15);
+}
+
+.hero-date {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.15rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--ink-light);
+  margin-bottom: 6px;
+  text-shadow:
+    0 0.5px 0 rgba(255,255,255,0.2),
+    0 -0.5px 1px rgba(0,0,0,0.06);
+}
+
+.hero-venue {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1rem;
+  color: var(--ink-faint);
+  letter-spacing: 0.1em;
+  text-shadow: 0 0.5px 0 rgba(255,255,255,0.15);
+}
+
+.hero-note {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.9rem;
+  font-style: italic;
+  color: var(--ink-faint);
+  margin-top: 16px;
+  text-shadow: 0 0.5px 0 rgba(255,255,255,0.12);
+}
+
+/* ── Section Styles ── */
+.section {
+  text-align: center;
+  padding-bottom: 52px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 52px;
+}
+
+.section:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+  margin-bottom: 0;
+}
+
+.section-title {
+  font-family: 'Cormorant SC', 'Cormorant Garamond', serif;
+  font-size: 1.1rem;
+  letter-spacing: 0.3em;
+  text-transform: lowercase;
+  color: var(--ink);
+  margin-bottom: 28px;
+  font-weight: 400;
+  text-shadow:
+    0 0.5px 0 rgba(255,255,255,0.2),
+    0 -0.5px 1px rgba(0,0,0,0.08);
+}
+
+.section-title::after {
+  content: '';
+  display: block;
+  width: 32px;
+  height: 1px;
+  background: var(--gold);
+  margin: 14px auto 0;
+  box-shadow: 0 0.5px 0 rgba(255,255,255,0.3);
+}
+
+.section p {
+  font-size: 1.05rem;
+  color: var(--ink-light);
+  max-width: 480px;
+  margin: 0 auto;
+  line-height: 1.8;
+  text-shadow: 0 0.5px 0 rgba(255,255,255,0.12);
+}
+
+/* ── Hotel Block ── */
+.hotel-name {
+  font-family: 'Cormorant SC', 'Cormorant Garamond', serif;
+  font-size: 1.2rem;
+  letter-spacing: 0.1em;
+  color: var(--ink);
+  margin-bottom: 8px;
+  font-weight: 600;
+  text-shadow:
+    0 0.5px 0 rgba(255,255,255,0.2),
+    0 -0.5px 1px rgba(0,0,0,0.08);
+}
+
+.hotel-rate {
+  font-size: 1.05rem;
+  color: var(--gold-dark);
+  margin-bottom: 16px;
+  font-style: italic;
+}
+
+.hotel-details {
+  font-size: 0.95rem;
+  color: var(--ink-faint);
+  line-height: 1.8;
+}
+
+/* ── RSVP Form ── */
+.rsvp-form {
+  max-width: 400px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+.form-group {
+  margin-bottom: 24px;
+}
+
+.form-group label {
+  display: block;
+  font-family: 'Cormorant SC', 'Cormorant Garamond', serif;
+  font-size: 0.85rem;
+  letter-spacing: 0.2em;
+  text-transform: lowercase;
+  color: var(--ink-faint);
+  margin-bottom: 8px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 12px 0;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.05rem;
+  color: var(--ink);
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--border);
+  outline: none;
+  transition: border-color 0.3s ease;
+  border-radius: 0;
+  -webkit-appearance: none;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-bottom-color: var(--gold);
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: var(--ink-faint);
+  opacity: 0.5;
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+.form-group select {
+  cursor: pointer;
+  background-image: url("data:image/svg+xml,%3Csvg width='10' height='6' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%237A7265'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 4px center;
+  padding-right: 24px;
+}
+
+/* Radio group for attending */
+.radio-group {
+  display: flex;
+  gap: 32px;
+  padding: 12px 0;
+}
+
+.radio-option {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+}
+
+.radio-option input[type="radio"] {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border: 1px solid var(--ink-faint);
+  border-radius: 50%;
+  cursor: pointer;
+  position: relative;
+  flex-shrink: 0;
+  padding: 0;
+}
+
+.radio-option input[type="radio"]:checked {
+  border-color: var(--gold);
+}
+
+.radio-option input[type="radio"]:checked::after {
+  content: '';
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 10px;
+  height: 10px;
+  background: var(--gold);
+  border-radius: 50%;
+}
+
+.radio-option span {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.05rem;
+  color: var(--ink-light);
+}
+
+.submit-btn {
+  display: block;
+  width: 100%;
+  padding: 14px 32px;
+  margin-top: 32px;
+  font-family: 'Cormorant SC', 'Cormorant Garamond', serif;
+  font-size: 0.95rem;
+  letter-spacing: 0.25em;
+  text-transform: lowercase;
+  color: var(--card);
+  background: var(--ink);
+  border: 1px solid var(--ink);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.submit-btn:hover {
+  background: transparent;
+  color: var(--ink);
+}
+
+.submit-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* ── Form Messages ── */
+.form-message {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 1rem;
+  color: var(--ink-light);
+  display: none;
+}
+
+.form-message.success {
+  color: var(--gold-dark);
+  display: block;
+}
+
+.form-message.error {
+  color: #9B3B3B;
+  display: block;
+}
+
+/* ── Footer ── */
+.footer {
+  text-align: center;
+  padding-top: 36px;
+  margin-top: 8px;
+}
+
+.footer-bee {
+  width: 28px;
+  height: 28px;
+  margin: 0 auto 12px;
+}
+
+.footer-bee svg {
+  width: 100%;
+  height: 100%;
+}
+
+.footer p {
+  font-size: 0.8rem;
+  color: var(--ink-faint);
+  letter-spacing: 0.15em;
+  text-shadow: 0 0.5px 0 rgba(255,255,255,0.12);
+}
+
+/* ── Animations ── */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero,
+.section {
+  animation: fadeInUp 0.8s ease forwards;
+}
+
+.section:nth-child(2) { animation-delay: 0.15s; }
+.section:nth-child(3) { animation-delay: 0.3s; }

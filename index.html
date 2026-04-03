@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ada &amp; Michael — July 18, 2026</title>
+  <meta name="description" content="Wedding celebration of Ada Maciejewski and Michael Potters. July 18, 2026 at 20 Victoria, Toronto.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Cormorant+SC:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <main class="card">
+    <div class="card-inner">
+
+      <!-- Hero -->
+      <section class="hero">
+        <h1 class="hero-names">
+          Ada Maciejewski
+          <span class="ampersand">&amp;</span>
+          Michael Potters
+        </h1>
+
+        <p class="hero-date">July 18, 2026</p>
+        <p class="hero-venue">20 Victoria Restaurant &middot; 20 Victoria St, Toronto, ON</p>
+        <p class="hero-note">Dinner time to be announced. Details will be sent via email.</p>
+      </section>
+
+      <!-- RSVP -->
+      <section class="section" id="rsvp">
+        <h2 class="section-title">Kindly Respond</h2>
+        <form id="rsvp-form" class="rsvp-form">
+          <div class="form-group">
+            <label for="name">Full Name</label>
+            <input type="text" id="name" name="name" required placeholder="As it appears on your invitation">
+          </div>
+
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required placeholder="your@email.com">
+          </div>
+
+          <div class="form-group">
+            <label>Will You Be Joining Us?</label>
+            <div class="radio-group">
+              <label class="radio-option">
+                <input type="radio" name="attending" value="yes" required>
+                <span>Joyfully accepts</span>
+              </label>
+              <label class="radio-option">
+                <input type="radio" name="attending" value="no">
+                <span>Regretfully declines</span>
+              </label>
+            </div>
+          </div>
+
+          <button type="submit" class="submit-btn">Send RSVP</button>
+          <div id="form-message" class="form-message"></div>
+        </form>
+      </section>
+
+      <!-- Hotel Block -->
+      <section class="section" id="accommodations">
+        <h2 class="section-title">Accommodations</h2>
+        <p class="hotel-name">Courtyard by Marriott Downtown Toronto</p>
+        <p class="hotel-rate">$315 per night</p>
+        <p class="hotel-details">
+          A block of rooms has been reserved for our guests.<br>
+          Please mention the Maciejewski &amp; Potters wedding when booking.
+        </p>
+      </section>
+
+      <!-- Footer -->
+      <div class="footer">
+        <p>A &amp; M &middot; 2026</p>
+      </div>
+
+    </div>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
